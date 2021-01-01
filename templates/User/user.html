@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+
+<h1 class="display-3 m-4 text-center">User Dashboard</h1>
+
+<div class="container row">
+  <div class="col">
+  <img class="user-profile-img mb-3" src="{{user.img_url}}" alt="">
+  <p><strong>Username:</strong> {{user.username}}</p>
+  <p><strong>Name: </strong>{{user.first_name}} {{user.last_name}}</p>
+  <p><strong>Email: </strong>{{user.email}}</p>
+  <form action="/users/{{user.username}}/settings">
+    <button class="btn btn-info mt-3">Change User Info</button>
+  </form>
+  <form action="/users/{{user.username}}/change-password">
+    <button class="btn btn-warning mt-3">Change Password</button>
+  </form>
+  <form action="/users/{{user.username}}/delete" method="POST">
+    <button class="btn btn-danger mt-3">Delete User</button>
+  </form>
+  </div>
+  <div class="col-4">
+    <h3>My Exercises</h3>
+    <ul>
+      {% for user_exercise in user_exercises %}
+      <li>
+        <a href="/exercises/{{user_exercise.exercise.category.id}}/{{user_exercise.exercise.id}}">
+          {{user_exercise.exercise.name}}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="container row mt-5">
+  <div class="col">
+    <h3 class="mt-3 mb-3">My Exercise Comments</h3>
+    <ul>
+      {% for comment in user_exercise_comments %}
+      <li>
+        <a href="/exercises/{{comment.exercise.category_id}}/{{comment.exercise.id}}">
+          {{comment.exercise.name}} - {{comment.content}}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% endblock %}

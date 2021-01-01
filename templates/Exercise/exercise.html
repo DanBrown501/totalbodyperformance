@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{exercise.name}}{% endblock %}
+
+{% block content %}
+
+<h1 id="{{exercise.name}}" class="text-center mb-5">{{exercise.name}}
+  <span>  
+  {% if exercise.id == user_exercise.exercise_id %} 
+    <form action="/users/{{session['username']}}/exercises/remove" method="POST">
+      <small>
+        <button class="btn btn-sm btn-danger" name="data" value={{exercise.id}}>
+          Remove From My Exercises
+        </button>
+      </small>
+    </form>
+  {% else %}
+    <form action="/users/{{session['username']}}/exercises/add" method="POST">
+      <small>
+        <button class="btn btn-sm btn-success" name="data" value={{exercise.id}}>
+          Add to My Exercises
+        </button>
+      </small>
+    </form>
+  {% endif %}
+  </span> 
+</h1>
+     
+<div id="exercise-description">{{exercise.description}}</div>
+
+<div id="images-container" class="container-fluid mt-5 d-flex justify-content-center"></div>
+
+{% include '/exercise/exercise_comment.html' %}
+  
+{% endblock %}
+
+{% block js %}
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% endblock %}

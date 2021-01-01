@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Total Body Performance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+  <link rel="stylesheet" href="/static/styles/homepage.css">
+</head>
+<body>
+  <!-- Menu Overlay -->
+
+  <div class="overlay overlay-slide-left" id="overlay">
+    <!-- Menu Items -->
+    <nav>
+      <ul>
+        <li id="nav-1" class="slide-out-1"><a href="#">Home</a></li>
+        {% if 'username' not in session %}
+        <li id="nav-2" class="slide-out-2"><a href="/register">Register</a></li>
+        <li id="nav-3" class="slide-out-3"><a href="/login">Sign In</a></li>
+        <li id="nav-4" class="slide-out-4"><a href="/exercises">Exercises</a></li>
+        {% else %}
+        <li id="nav-2" class="slide-out-2"><a href="/exercises">Exercises</a></li>
+        <li id="nav-3" class="slide-out-3"><a href="/users/{{session['username']}}">User Dashboard</a></li>
+        <li id="nav-4" class="slide-out-4"><a href="/logout">Log Out</a></li>
+        {% endif %}
+      </ul>
+      
+    </nav>
+  </div>
+    <!-- Menu Bars -->
+    <div class="menu-bars" id="menu-bars">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  
+  <!-- Sections -->
+  <section id="home"><a class="home-tag" href="" target="_blank">Total Body Performance</a>
+      <h1>Welcome to Total Body Performance!</h1>
+      <p>Train Harder and Smarter</p>
+  </section>
+
+  <script src="/static/scripts/homepage.js"></script>
+</body>
+</html>
+ 

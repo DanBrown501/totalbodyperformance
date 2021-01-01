@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{exercises[0].category.name}}{% endblock %}
+
+{% block content %}
+
+<h1>Exercises For: {{exercises[0].category.name}}</h1>
+
+<p>
+  <strong class="text-danger">
+      Please Note: You need to be signed in to view exercise details.
+  </strong>
+</p>
+
+<div class="mb-5 mt-3">
+  <ul>
+    {% for exercise in exercises %}
+    <li><a href="/exercises/{{exercise.category_id}}/{{exercise.id}}">{{exercise.name}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+  
+{% endblock %}
+  
+ 
