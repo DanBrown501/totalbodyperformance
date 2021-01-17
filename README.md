@@ -13,7 +13,7 @@ Technology Stack
 * [Twitter Bootstrap] - fast node.js network app framework [@tjholowaychuk]
 * [Flask] - the streaming build system
 * [Jinja](https://breakdance.github.io/breakdance/) - HTML to Markdown converter
-* [Flask-SqlAlchemy] - duh
+* [Flask-SqlAlchemy] 
 
 # Features!
 
